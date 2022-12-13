@@ -1,0 +1,76 @@
+Corey did not create mysql
+all was migrated from cmd command and createsuperuser was done on cmd
+(coreyoneenv) PS C:\Users\23470\desktop\corey\coreyone> python manage.py createsuperuser
+before creating superuser and migrate do this first
+python manage.py makemigrations and you will get no changed detected.
+then run python manage.py migrate
+after which you can create super user by doing
+python manage.py createsuperuser
+
+Username (leave blank to use '23470'): corey
+Email address: coaster6012@gmail.com
+Password:
+Password (again):
+Superuser created successfully.
+
+user name
+corey
+password
+laptop100
+
+
+ORM (Object related Mapper)
+SQL QUERY
+>>> user.pk
+1
+>>> user = User.objects.get(id=1)
+>>> user
+<User: corey>
+>>> Post.object.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Post' has no attribute 'object'
+>>> user
+<User: corey>
+>>> Post.objects.all()
+<QuerySet []>
+>>> post_1 = Post(title='Blog 1', content='First Post Content:', author=user)
+>>> post_1 = Post(title='Blog 1', content='First Post Content:', author=user)
+>>> Post.objects.all()
+<QuerySet []>
+>>> post_1.save()
+>>> Post.objects.all()
+<QuerySet [<Post: Post object (1)>]>
+>>> exit()
+(coreyoneenv) PS C:\Users\23470\desktop\corey\coreyone> python manage.py shell
+Python 3.10.7 (tags/v3.10.7:6cc6b13, Sep  5 2022, 14:08:36) [MSC v.1933 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from blog.models import Post
+>>> from django.contrib.auth.models import User
+>>> Post.objects.all()
+<QuerySet [<Post: Blog 1>]>
+>>> user = User.objects.filter(username='corey').first()
+>>> user
+<User: corey>
+>>> post_2 = Post(title='Blog 2', content='Second Post Content:')
+>>> post_2 = Post(title='Blog 2', content='Second Post Content', author_id=user.id)
+>>> post_2.save()
+>>> Post.objects.all()
+<QuerySet [<Post: Blog 1>, <Post: Blog 2>]>
+>>> post = Post.objects.first()
+>>> post.content
+'First Post Content:'
+>>> post.date_posted
+datetime.datetime(2022, 11, 20, 15, 23, 22, 455142, tzinfo=datetime.timezone.utc)
+>>> post.author
+<User: corey>
+>>>
+
+
+for better forms to use bootstrap4
+install crispy and put it under static and load it inside your form
+Use bootstrap4
+
+
+
